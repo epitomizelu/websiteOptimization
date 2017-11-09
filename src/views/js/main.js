@@ -403,13 +403,13 @@ var resizePizzas = function(size) {
   function changeSliderLabel(size) {
     switch(size) {
       case "1":
-        document.querySelector("#pizzaSize").innerHTML = "Small";
+        document.getElementById("pizzaSize").innerHTML = "Small";
         return;
       case "2":
-        document.querySelector("#pizzaSize").innerHTML = "Medium";
+        document.getElementById("pizzaSize").innerHTML = "Medium";
         return;
       case "3":
-        document.querySelector("#pizzaSize").innerHTML = "Large";
+        document.getElementById("pizzaSize").innerHTML = "Large";
         return;
       default:
         console.log("bug in changeSliderLabel");
@@ -421,7 +421,7 @@ var resizePizzas = function(size) {
    // 返回不同的尺寸以将披萨元素由一个尺寸改成另一个尺寸。由changePizzaSlices(size)函数调用
   function determineDx (elem, size) {
     var oldWidth = elem.offsetWidth;
-    var windowWidth = document.querySelector("#randomPizzas").offsetWidth;
+    var windowWidth = document.getElementById("randomPizzas").offsetWidth;
     var oldSize = oldWidth / windowWidth;
 
     // 将值转成百分比宽度
@@ -524,6 +524,14 @@ function updatePositions2() {
   window.requestAnimationFrame(updatePositions);
 }
 
+// 根据pizaa大小和浏览器高度得到pizza总个数
+function getPizzaNum(cols) {
+   var clientHeight = document.documentElement.clientHeight || document.body.clientHeight;
+
+   return Math.ceil((clientHeight / 100 ) * cols);
+
+}
+
 // 在页面滚动时运行updatePositions函数
 window.addEventListener('scroll', updatePositions2);
 
@@ -531,7 +539,11 @@ window.addEventListener('scroll', updatePositions2);
 document.addEventListener('DOMContentLoaded', function() {
   var cols = 8;
   var s = 256;
-  for (var i = 0; i < 36; i++) {
+  var pizzaNum = getPizzaNum(cols);
+
+  pizzaNum = pizzaNum && pizzaNum > 36 ? pizzaNum : 36;
+
+  for (var i = 0; i < pizzaNum; i++) {
     var elem = document.createElement('img');
     elem.className = 'mover';
     elem.src = "images/pizza.png";
@@ -540,7 +552,7 @@ document.addEventListener('DOMContentLoaded', function() {
     elem.style.left = '0';
     elem.basicLeft = (i % cols) * s;
     elem.style.top = (Math.floor(i / cols) * s) + 'px';
-    document.querySelector("#movingPizzas1").appendChild(elem);
+    document.getElementById("movingPizzas1").appendChild(elem);
   }
   updatePositions();
 });
