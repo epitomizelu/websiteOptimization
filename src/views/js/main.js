@@ -459,14 +459,14 @@ var resizePizzas = function(size) {
 
   changePizzaSizes(size);
 
-  // User Timing API 太棒了
-  window.performance.mark("mark_end_resize");
-  window.performance.measure("measure_pizza_resize", "mark_start_resize", "mark_end_resize");
-  var timeToResize = window.performance.getEntriesByName("measure_pizza_resize");
-  console.log("Time to resize pizzas: " + timeToResize[timeToResize.length-1].duration + "ms");
+  // // User Timing API 太棒了
+  // window.performance.mark("mark_end_resize");
+  // window.performance.measure("measure_pizza_resize", "mark_start_resize", "mark_end_resize");
+  // var timeToResize = window.performance.getEntriesByName("measure_pizza_resize");
+  // console.log("Time to resize pizzas: " + timeToResize[timeToResize.length-1].duration + "ms");
 };
 
-window.performance.mark("mark_start_generating"); // 收集timing数据
+// window.performance.mark("mark_start_generating"); // 收集timing数据
 
 // 这个for循环在页面加载时创建并插入了所有的披萨
 for (var i = 2; i < 100; i++) {
@@ -475,49 +475,49 @@ for (var i = 2; i < 100; i++) {
 }
 
 // 使用User Timing API。这里的测量数据告诉了你生成初始的披萨用了多长时间
-window.performance.mark("mark_end_generating");
-window.performance.measure("measure_pizza_generation", "mark_start_generating", "mark_end_generating");
-var timeToGenerate = window.performance.getEntriesByName("measure_pizza_generation");
-console.log("Time to generate pizzas on load: " + timeToGenerate[0].duration + "ms");
+// window.performance.mark("mark_end_generating");
+// window.performance.measure("measure_pizza_generation", "mark_start_generating", "mark_end_generating");
+// var timeToGenerate = window.performance.getEntriesByName("measure_pizza_generation");
+// console.log("Time to generate pizzas on load: " + timeToGenerate[0].duration + "ms");
 
 // 背景披萨滚动时调用函数的次数和
 // 由updatePositions()函数使用，用来决定什么时候记录平均帧率
-var frame = 0;
+// var frame = 0;
 
 // 记录滚动时背景滑窗披萨移动的每10帧的平均帧率
-function logAverageFrame(times) {   // times参数是updatePositions()由User Timing得到的测量数据
-  var numberOfEntries = times.length;
-  var sum = 0;
-  for (var i = numberOfEntries - 1; i > numberOfEntries - 11; i--) {
-    sum = sum + times[i].duration;
-  }
-  console.log("Average scripting time to generate last 10 frames: " + sum / 10 + "ms");
-}
+// function logAverageFrame(times) {   // times参数是updatePositions()由User Timing得到的测量数据
+  // var numberOfEntries = times.length;
+  // var sum = 0;
+  // for (var i = numberOfEntries - 1; i > numberOfEntries - 11; i--) {
+  //   sum = sum + times[i].duration;
+  // }
+  // console.log("Average scripting time to generate last 10 frames: " + sum / 10 + "ms");
+// }
 
 // 下面的关于背景滑窗披萨的代码来自于Ilya的demo:
 // https://www.igvita.com/slides/2012/devtools-tips-and-tricks/jank-demo.html
 
 // 基于滚动条位置移动背景中的披萨滑窗
 function updatePositions() {
-  frame++;
-  window.performance.mark("mark_start_frame");
+  // frame++;
+  // window.performance.mark("mark_start_frame");
 
   var items = document.getElementsByClassName('mover'),
-  basicNum = document.body.scrollTop / 1250,
+  basicNum = document.documentElement.scrollTop / 1250,
   itemsLength = items.length;
   for (var i = 0; i < itemsLength; i++) {
     var phase = Math.sin( basicNum + (i % 5));
-    items[i].style.transform = 'translateX(' + items[i].basicLeft + 100 * phase + 'px)';
+    items[i].style.transform = 'translateX(' + (items[i].basicLeft + 100 * phase) + 'px)';
   }
 
-  // 再次使用User Timing API。这很值得学习
-  // 能够很容易地自定义测量维度
-  window.performance.mark("mark_end_frame");
-  window.performance.measure("measure_frame_duration", "mark_start_frame", "mark_end_frame");
-  if (frame % 10 === 0) {
-    var timesToUpdatePosition = window.performance.getEntriesByName("measure_frame_duration");
-    logAverageFrame(timesToUpdatePosition);
-  }
+  // // 再次使用User Timing API。这很值得学习
+  // // 能够很容易地自定义测量维度
+  // window.performance.mark("mark_end_frame");
+  // window.performance.measure("measure_frame_duration", "mark_start_frame", "mark_end_frame");
+  // if (frame % 10 === 0) {
+  //   var timesToUpdatePosition = window.performance.getEntriesByName("measure_frame_duration");
+  //   logAverageFrame(timesToUpdatePosition);
+  // }
 }
 
 function updatePositions2() {
@@ -531,12 +531,13 @@ window.addEventListener('scroll', updatePositions2);
 document.addEventListener('DOMContentLoaded', function() {
   var cols = 8;
   var s = 256;
-  for (var i = 0; i < 200; i++) {
+  for (var i = 0; i < 36; i++) {
     var elem = document.createElement('img');
     elem.className = 'mover';
     elem.src = "images/pizza.png";
     elem.style.height = "100px";
     elem.style.width = "73.333px";
+    elem.style.left = '0';
     elem.basicLeft = (i % cols) * s;
     elem.style.top = (Math.floor(i / cols) * s) + 'px';
     document.querySelector("#movingPizzas1").appendChild(elem);

@@ -16,9 +16,9 @@ gulp.task('minify-js', function () {
 });
 
 gulp.task('minify-css', function () {
-    gulp.src('src/css/*.css') // 要压缩的css文件
+    gulp.src('src/**/*.css') // 要压缩的css文件
     .pipe(minifyCss()) //压缩css
-    .pipe(gulp.dest('dest/css'));
+    .pipe(gulp.dest('dest/'));
 });
 
 gulp.task('minify-html', function () {
