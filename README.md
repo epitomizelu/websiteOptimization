@@ -2,8 +2,8 @@
 
 ####Part 1: 如何访问我优化后的网站？
 
->1,我将优化后的项目提交到github上，仓库地址[https://github.com/epitomizelu/websiteOptimization](https://github.com/epitomizelu/websiteOptimization)
->2,该项目已经托管到github pages，访问地址[https://epitomizelu.github.io/websiteOptimization/dest/index.html](https://epitomizelu.github.io/websiteOptimization/dest/index.html)
+>1. 我将优化后的项目提交到github上，仓库地址[https://github.com/epitomizelu/websiteOptimization](https://github.com/epitomizelu/websiteOptimization)
+>2. 该项目已经托管到github pages，访问地址[https://epitomizelu.github.io/websiteOptimization/dest/index.html](https://epitomizelu.github.io/websiteOptimization/dest/index.html)
 
 ####Part 1: 优化 index.html 的 PageSpeed Insights 得分
 
