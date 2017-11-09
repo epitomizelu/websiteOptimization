@@ -5,9 +5,9 @@ minifyHtml = require("gulp-minify-html"),
 imagemin = require('gulp-imagemin');
 
 
-// gulp.task('default', function() {
-//     gulp.src('src/**').pipe(gulp.dest('dest/'));
-// });
+gulp.task('default', function() {
+    gulp.src('src/**').pipe(gulp.dest('dest/'));
+});
 
 gulp.task('minify-js', function () {
     gulp.src('src/**/*.js') // 要压缩的js文件
