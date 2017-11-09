@@ -1,5 +1,26 @@
 ## 网站性能优化项目
 
+####Part 1: 如何访问我优化后的网站？
+
+>1,我将优化后的项目提交到github上，仓库地址[https://github.com/epitomizelu/websiteOptimization](https://github.com/epitomizelu/websiteOptimization)
+2,该项目已经托管到github pages，访问地址[https://epitomizelu.github.io/websiteOptimization/dest/index.html](https://epitomizelu.github.io/websiteOptimization/dest/index.html)
+
+####Part 1: 优化 index.html 的 PageSpeed Insights 得分
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 你要做的是尽可能优化这个在线项目的速度。注意，请应用你之前在[网站性能优化课程](https://cn.udacity.com/course/website-performance-optimization--ud884/)中学习的技术来优化关键渲染路径并使这个页面尽可能快的渲染。
 
 开始前，请导出这个代码库并检查代码。
