@@ -10,9 +10,9 @@ imagemin = require('gulp-imagemin');
 // });
 
 gulp.task('minify-js', function () {
-    gulp.src('src/js/*.js') // 要压缩的js文件
+    gulp.src('src/**/*.js') // 要压缩的js文件
     .pipe(uglify())  //使用uglify进行压缩,更多配置请参考：
-    .pipe(gulp.dest('dest/js')); //压缩后的路径
+    .pipe(gulp.dest('dest/')); //压缩后的路径
 });
 
 gulp.task('minify-css', function () {
