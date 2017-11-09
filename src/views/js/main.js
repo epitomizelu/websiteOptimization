@@ -446,10 +446,14 @@ var resizePizzas = function(size) {
 
   // 遍历披萨的元素并改变它们的宽度
   function changePizzaSizes(size) {
-    for (var i = 0; i < document.querySelectorAll(".randomPizzaContainer").length; i++) {
-      var dx = determineDx(document.querySelectorAll(".randomPizzaContainer")[i], size);
-      var newwidth = (document.querySelectorAll(".randomPizzaContainer")[i].offsetWidth + dx) + 'px';
-      document.querySelectorAll(".randomPizzaContainer")[i].style.width = newwidth;
+    var containers = document.getElementsByClassName(".randomPizzaContainer"),
+    containersLen = containers.length,
+    offsetWidth = containers[0].offsetWidth,
+    dx = determineDx(containers[0], size),
+    newwidth = (offsetWidth + dx) + 'px';
+
+    for (var i = 0; i < containersLen; i++) {
+      containers[i].style.width = newwidth;
     }
   }
 
@@ -498,10 +502,12 @@ function updatePositions() {
   frame++;
   window.performance.mark("mark_start_frame");
 
-  var items = document.querySelectorAll('.mover');
-  for (var i = 0; i < items.length; i++) {
-    var phase = Math.sin((document.body.scrollTop / 1250) + (i % 5));
-    items[i].style.left = items[i].basicLeft + 100 * phase + 'px';
+  var items = document.getElementsByClassName('.mover'),
+  basicNum = document.body.scrollTop / 1250,
+  itemsLength = items.length;
+  for (var i = 0; i < itemsLength; i++) {
+    var phase = Math.sin( basicNum + (i % 5));
+    items[i].style.transform = 'translateX(' + items[i].basicLeft + 100 * phase + 'px)';
   }
 
   // 再次使用User Timing API。这很值得学习
@@ -514,8 +520,12 @@ function updatePositions() {
   }
 }
 
+function updatePositions2() {
+  window.requestAnimationFrame(updatePositions);
+}
+
 // 在页面滚动时运行updatePositions函数
-window.addEventListener('scroll', updatePositions);
+window.addEventListener('scroll', updatePositions2);
 
 // 当页面加载时生成披萨滑窗
 document.addEventListener('DOMContentLoaded', function() {
