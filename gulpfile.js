@@ -22,7 +22,7 @@ gulp.task('minify-css', function () {
 });
 
 gulp.task('minify-html', function () {
-    gulp.src('src/*.html') // 要压缩的html文件
+    gulp.src('src/**/*.html') // 要压缩的html文件
     .pipe(minifyHtml()) //压缩
     .pipe(gulp.dest('dest/'));
 });
