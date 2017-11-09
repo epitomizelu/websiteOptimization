@@ -20,9 +20,11 @@
 >3. 用getElementsByClassName 取代 querySelectorAll;
 >4. 优化函数 updatePositions 中可能导致强制同步布局（fsl）的for循环； 
 >5. 用 requestAnimationFrame 执行pizza滑窗的位置更新；
+>6. 注释掉User Timing API
+
 
  
-##### 3，对于 pizza 尺寸滑块调整 pizza 大小动画 执行时间的优化
+##### 3，对于 pizza尺寸滑块调整pizza大小动画的执行时间的优化
 
 >1. 用getElementsByClassName 取代 querySelectorAll;
 >2. 优化函数 changePizzaSizes 中可能导致强制同步布局（fsl）的for循环； 
