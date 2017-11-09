@@ -1,5 +1,15 @@
 ## 网站性能优化项目
 
+#### 第二次提交
+
+##### 在上次提交基础上结合reviewer的反馈，做了如下修改
+>1. style.css 改为内联脚本
+>2. 压缩优化了所有图片
+>3. main.js 文件中querySelector替换为getElementById
+>4. 根据浏览器高度计算移动滑动的pizza个数
+
+
+
 #### Part 1: 如何访问我优化后的网站？
 
 >1. 我将优化后的项目提交到github上，仓库地址[https://github.com/epitomizelu/websiteOptimization](https://github.com/epitomizelu/websiteOptimization)
