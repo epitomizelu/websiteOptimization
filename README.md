@@ -11,7 +11,7 @@
 >1. 用媒体查询(media='print')取消外部样式文件 print.css 阻塞渲染;
 >2. 用异步脚本（async）取消外部js文件 analytics.js 阻塞html解析;
 >3. 用构建工具 gulp 压缩js、html、css和图片;
->4. 异步加载字体文件
+>4. 异步加载字体文件,在index.html的head标签内添加了内联脚本
 
 
 ##### 2，对于 main.js 中滚动时要达到 60fps 的优化
@@ -19,8 +19,7 @@
 >2. 减少pizza滑窗中的pizza 个数 和 大小;
 >3. 用getElementsByClassName 取代 querySelectorAll;
 >4. 优化函数 updatePositions 中可能导致强制同步布局（fsl）的for循环； 
->5. 用 requestAnimationFrame 执行pizza滑窗的位置更新；
->6. 注释掉User Timing API
+>5. 用 requestAnimationFrame 执行pizza滑窗的位置更新； 
 
 
  
